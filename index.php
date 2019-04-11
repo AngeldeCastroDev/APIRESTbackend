@@ -168,8 +168,8 @@ $app->post('/productos', function() use($app, $db){
 		$data['nombre']=null;
 	}
 
-	if(!isset($data['descripcion'])){
-		$data['descripcion']=null;
+	if(!isset($data['description'])){
+		$data['description']=null;
 	}
 
 	if(!isset($data['precio'])){
@@ -180,12 +180,12 @@ $app->post('/productos', function() use($app, $db){
 		$data['imagen']=null;
 	}
 
-	$query = "INSERT INTO productos VALUES(NULL,".
-			 "'{$data['nombre']}',".
-			 "'{$data['descripcion']}',".
-			 "'{$data['precio']}',".
-			 "'{$data['imagen']}'".
-			 ");";
+	$nom= $data['nombre'];
+    $desc= $data['description'];
+    $prec= $data['precio'];
+    $im= $data['imagen'];
+
+	$query = "INSERT INTO productos (nombre, description, precio, imagen) VALUES ('$nom','$desc','$prec','$im')";
 
 	$insert = $db->query($query);
 
